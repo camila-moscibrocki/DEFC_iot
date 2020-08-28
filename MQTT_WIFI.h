@@ -9,7 +9,7 @@
 #define VARIABLE_LABEL_HUMIDITY "humidity" //variável de umidade criada no ubidots
 #define VARIABLE_LABEL_VOLTAGE "voltage" //variável de tensão criada no ubidots
 #define DEVICE_ID "5f480f4f1d84724efc5ba918" //ID do dispositivo (Device id, também chamado de client name)
-#define SERVER "things.ubidots.com" //Servidor do Ubidots (broker)
+#define SERVER "things.ubidots.com" //Servidor do Ubidots
 
 //Porta padrão
 #define PORT 1883
@@ -19,7 +19,7 @@
 
 //Objeto WiFiClient usado para a conexão wifi
 WiFiClient ubidots;
-//Objeto PubSubClient usado para publish–subscribe
+//Objeto para publish–subscribe
 PubSubClient client(ubidots);
 
 
@@ -67,7 +67,7 @@ bool mqttInit()
   //Seta servidor com o broker e a porta
   client.setServer(SERVER, PORT);
   
-  //Conecta no ubidots com o Device id e o token, o password é informado como vazio
+  //Conecta no ubidots com o Device id e o token
   while(!client.connect(DEVICE_ID, TOKEN, ""))
   {
       Serial.println("MQTT - Connect error");

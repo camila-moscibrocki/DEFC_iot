@@ -7,7 +7,7 @@ float temperature; //Temperatura DHT
 float humidity; //Umidade DHT
 float voltage; //Tensão célula
   
-const int pinDHT = 22; //Pino DHT
+const int pinDHT = 22; //Pino DHT número 22
 SimpleDHT11 dht11(pinDHT); //valores do sensor DHT
 
 void setup() 
@@ -19,7 +19,7 @@ void setup()
   if(!loraDisplayConfig())
     ESP.restart();
 
-  //Exibe mensagem no display
+  //Exibe mensagem do mqtt no display
   showDisplay(0, "Setting up mqtt...", true);
   Serial.println("Setting up mqtt...");
 
@@ -54,8 +54,8 @@ bool getClimate()
   return true;
 }
 
-//valores a flag 'success' true
-//flag 'success' false, traço '-'
+//valores a flag 'success'=treu
+//flag 'success'=traço, traço '-'
 void showClimate(bool success)
 {
   if(success)
@@ -80,7 +80,7 @@ void showClimate(bool success)
 
 void loop() 
 {
-  voltage = (float)analogRead(36) / 4096 * 4.0;
+  voltage = (float)analogRead(36) / 4096 * 3.9;
   Serial.print(voltage,1);
   Serial.println("v");
   delay(200);
